@@ -1,0 +1,7 @@
+{% for key, value in ansible_facts.packages.items() if not (key | regex_search('kernel*'))  and  not  (key | regex_search('gpg-pubkey*')) -%}
+{{ansible_hostname}},{{ansible_date_time.date}},{{ansible_date_time.time}},{{key}},
+{%- for item in value %}
+{{ item.version }},{{item.release}}
+{% endfor %}
+{% endfor %}
+{{ansible_hostname}},{{ansible_date_time.date}},{{ansible_date_time.time}},kernel,{{ansible_kernel}},{{ansible_kernel_version}}

@@ -1,0 +1,12 @@
+[all]
+hpv1
+centos1
+centos2
+centos3
+centos4
+centos5
+centos6
+main
+database-centos8
+centos7-flask
+centos8-flask

@@ -1,0 +1,19 @@
+##Create a VM inventory
+- name: Getting inventory info for VMs.
+  block:
+  - name: Register as variables what VMs running on HPVs
+    community.libvirt.virt:
+      command: list_vms
+    register: vm_list_results
+
+  - name: template of hypervisors to register VMs.
+    template:
+      src: "{{j_hypervisors_and_vms}}"
+      dest: "{{final_dirs}}/{{c_hypervisors_and_vms}}"
+
+  - name: Fetch the hypervisor inventory templated file
+    fetch:
+            #src: /var/tmp/hypervisors_and_vms.csv
+      src: "{{final_dirs}}/{{c_hypervisors_and_vms}}"
+      dest: "{{server_path}}"
+  when: ansible_virtualization_role == "host"

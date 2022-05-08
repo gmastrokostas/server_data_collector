@@ -1,0 +1,34 @@
+#General server info
+- name: template data for servers table
+  template:
+    src: "{{j_servers}}"
+    dest: "{{final_dirs}}/{{c_servers}}"
+
+#For all RPMs installed
+- name: Load rpm ansible facts
+  package_facts:
+    manager: auto
+  register: rpm_packages
+
+- name: template data for software table
+  template:
+    src: "{{j_rpmpackages}}"
+    dest: "{{final_dirs}}/{{c_rpmpackages}}"
+
+
+#Network Setup data    
+- name: template data for network_setup table
+  template:
+    src: "{{j_network_setup}}"
+    dest: "{{final_dirs}}/{{c_network_setup}}"
+    
+
+#This will loop through all the j2 files.
+#if you add a new task with j2 fike, above,
+#make sure to the variables for the j2 and csv file in vars/main.yml file
+- name: Fetch the remote templated files for the general data
+  fetch:
+    src: "{{final_dirs}}/{{item.csvfile}}"
+    dest: "{{server_path}}"
+  loop:  "{{csvs}}"
+      
