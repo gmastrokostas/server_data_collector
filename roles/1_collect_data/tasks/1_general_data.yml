@@ -23,6 +23,12 @@
     dest: "{{final_dirs}}/{{c_network_setup}}"
     
 
+#Storage setup data
+- name: template data for storage_setup table
+  template:
+    src:  "{{j_storage_setup}}"
+    dest: "{{final_dirs}}/{{c_storage_setup}}"
+
 #This will loop through all the j2 files.
 #if you add a new task with j2 fike, above,
 #make sure to the variables for the j2 and csv file in vars/main.yml file
