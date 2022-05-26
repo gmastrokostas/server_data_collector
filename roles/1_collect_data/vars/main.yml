@@ -1,7 +1,7 @@
 #Between these two variables we the {{item}} loop to dive 
 #into the directories named after each server when we feth
 #the remote files
-server_path: /home/seeker/tools/server-data-collector/servers/
+server_path: /home/seeker/tools/server_data_collector/servers/
 final_dirs: /var/tmp
 
 ###Variables used by tasks/1_capture_data.yml to capture the ansible facts
