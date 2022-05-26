@@ -1,6 +1,7 @@
 - name: Upload data to database
   delegate_to: 127.0.0.1
   become_user: seeker
+  ignore_errors: True
   block:
   - name: Clean up all tables
     shell: psql -d serverdata -c "truncate table servers cascade"
