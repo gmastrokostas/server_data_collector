@@ -21,7 +21,6 @@
   template:
     src: "{{j_network_setup}}"
     dest: "{{final_dirs}}/{{c_network_setup}}"
-    
 
 #Storage setup data
 - name: template data for storage_setup table
