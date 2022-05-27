@@ -64,10 +64,10 @@
     tags:
       - network_setup
 
-  - name: Upload the storage setup data in the database
+  - name: Upload the storage capacity data in the database
     postgresql_copy:
-      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_storage_setup}}"
-      dst: storage_setup
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_storage_capacity}}"
+      dst: storage_capacity
       db: serverdata
       login_user: seeker
       options:

@@ -25,8 +25,8 @@
 #Storage setup data
 - name: template data for storage_setup table
   template:
-    src:  "{{j_storage_setup}}"
-    dest: "{{final_dirs}}/{{c_storage_setup}}"
+    src:  "{{j_storage_capacity}}"
+    dest: "{{final_dirs}}/{{c_storage_capacity}}"
 
 #This will loop through all the j2 files.
 #if you add a new task with j2 fike, above,

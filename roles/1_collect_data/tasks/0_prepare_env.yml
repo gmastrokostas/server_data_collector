@@ -1,0 +1,25 @@
+---
+- name: Delete the old server data csv files from conrol node
+  file:
+    path: "{{server_path}}"
+    state: absent
+  delegate_to: localhost
+
+- name: Delete the old server data csv files from conrol node
+  file:
+    path: "{{server_path}}"
+    state: directory
+    owner: "{{app_admin_account}}"
+  delegate_to: localhost
+
+- name: Test connectivity on servers 
+  wait_for:
+    host: "{{ansible_host|default(inventory_hostname)}}"
+    port: 22
+    state: started
+    timeout: 3
+
+- name: gather all subset facts
+  setup:
+    gather_subset:
+       - 'all'
