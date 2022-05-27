@@ -3,6 +3,10 @@
 #the remote files
 server_path: /home/seeker/tools/server_data_collector/servers/
 final_dirs: /var/tmp
+path_for_loop: /home/seeker/tools/server_data_collector/servers/"{{item}}"
+
+
+app_admin_account: seeker
 
 ###Variables used by tasks/1_capture_data.yml to capture the ansible facts
 ##template files variables
