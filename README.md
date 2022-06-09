@@ -74,6 +74,7 @@ RAM: 2GB RAM
                    Single Control node
           +-----------------------------------+
           |     Data is uploaded in Database  |
+          |     ---------------------------   |
           |                 ∧                 |
           |     Data is stored in CVS files   |
           |                 ∧                 |
