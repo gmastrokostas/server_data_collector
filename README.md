@@ -1,6 +1,7 @@
 # server_data_collector  v 0.4
 
 #IMPORTANT PLEASE READ
+----------------------
 This is the core release. It does not contain the features I am currently working on.
 This release serves as a starting point in order to keep building on top of it.
 To get things rolling sort to speak.
@@ -161,6 +162,7 @@ Table "command line options":
 
 	hostname
 	command line options
+
 
 	
 8- To Do (subject to constant change):
