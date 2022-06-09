@@ -8,14 +8,21 @@ For a full list of all the items I am working on see the "To Do" section.
 
 Document Sections:
 
-1  Purpose
+1-  Purpose
+
 2-  Tools used to capture data:
+
 3-  Server Requirements:
-4-  Logical Diagram of how Data is captured and stored:
+
+4-  Logical Diagram of how Data is captured and stored
+
 5-  Database Setup
+
 6-  Database Tables
+
 7-  Data Captured - All data are marked with the ansible timestamp fact:
-8-  To Do 
+
+8-  To Do
 
 
 
