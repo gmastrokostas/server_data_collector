@@ -83,7 +83,7 @@ RAM: 2GB RAM
                            |
                            v
      -----------------------------------------------   
-|  server   |  |  server   |   |   server  |  |   server  |
+     |  server   |  |  server   |   |   server  |  |   server  |
 
 
 
