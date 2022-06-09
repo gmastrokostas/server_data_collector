@@ -168,6 +168,7 @@ Table "command line options":
 8a)  Additional features to be added
 
 Add functionality to allow comparison of any pre and post changes.
+
   	Example:
    	Any changes on rpm (installs, updates).
    	Any changes on mount points, routing tables, etc
