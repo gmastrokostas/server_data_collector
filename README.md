@@ -94,11 +94,11 @@ RAM: 2GB RAM
 
 5- Database Setup
 --------------
-Type: PostgreSQL
-Version: 14
-role: seeker (superuser)
-db_name: serverdata with owner seeker
-schema_name: serverdata_schema
+- Type: PostgreSQL
+- Version: 14
+- role: seeker (superuser)
+- db_name: serverdata with owner seeker
+- schema_name: serverdata_schema
 
 
 
