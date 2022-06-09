@@ -116,7 +116,7 @@ schema_name: serverdata_schema
 
 7- Data Captured - All data are marked with the ansible timestamp fact:
 --------------
-* Table "servers" (This is the main table):
+Table "servers" (This is the main table):
 	
 	hostname
 	Operating System and Release
@@ -133,19 +133,22 @@ Table "hpv_vm_inventory":
 	name of virtual machine
 
 Table "networ_setup":
+
 	hostname
 	default route
 	default interface
 	interface type
 	dns entries
 	
-Table "rpm_packages"
+Table "rpm_packages":
+
 	hostname
 	rpm name
 	rpm version
 	rpm release
 
-Table "Storage setup"
+Table "Storage setup":
+
 	hostname
 	mount points
 	device
@@ -154,7 +157,8 @@ Table "Storage setup"
 	uuid
 	swap mount / total / free
 
-Table "command line options"
+Table "command line options":
+
 	hostname
 	command line options
 
