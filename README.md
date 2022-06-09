@@ -117,7 +117,8 @@ schema_name: serverdata_schema
 7- Data Captured - All data are marked with the ansible timestamp fact:
 --------------
 Table "servers" (This is the main table):
-	\hostname
+	
+	hostname
 	Operating System and Release
 	SELinux Status/mode/type
 	Total RAM
