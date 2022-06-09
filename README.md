@@ -104,7 +104,7 @@ schema_name: serverdata_schema
 
 6- Database Tables
 ----------------
-*serverdata_schema.servers
+- serverdata_schema.servers
 serverdata_schema.command_line_options
 serverdata_schema.hpv_vm_inventory
 serverdata_schema.network_setup
