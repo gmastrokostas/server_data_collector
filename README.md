@@ -169,9 +169,9 @@ Table "command line options":
 
 Add functionality to allow comparison of any pre and post changes.
   	Example:
-   	* Any changes on rpm (installs, updates).
-   	* Any changes on mount points, routing tables, etc
-   	* Historical data comparison for storage /memory usage etc.
+   	Any changes on rpm (installs, updates).
+   	Any changes on mount points, routing tables, etc
+   	Historical data comparison for storage /memory usage etc.
 
 8b)  Additional Data to be captured:
 - Routing Tables
