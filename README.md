@@ -20,7 +20,7 @@ Document Sections:
 
 6-  Database Tables
 
-7-  Data Captured - All data are marked with the ansible timestamp fact:
+7-  Data Captured
 
 8-  To Do
 
@@ -62,7 +62,9 @@ Postgres Database v 14
 3- Server Requirements:
 --------------------
 OS: Centos8 - Rocky8 - Currently being tested in RedHat 8
+
 CPU: 1GhZ
+
 RAM: 2GB RAM
 
 
@@ -82,7 +84,6 @@ RAM: 2GB RAM
           |     +---------------------------+ |          
           |     Ansible captures server data  |
 	  |     +---------------------------+ |
-          +-----------------------------------+
                            ∧
                            |
                            v
