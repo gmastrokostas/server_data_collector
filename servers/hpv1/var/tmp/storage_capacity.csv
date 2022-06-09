@@ -1,3 +1,0 @@
-hpv1|/|xfs|/dev/mapper/cs-root|193623581|242790576|49166995|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|0197cc69-7b48-45d3-9936-b105300e8230|/dev/mapper/cs-swap|3999|3979|2022-05-27|08:25:49
-hpv1|/boot|xfs|/dev/sdd1|77593|254581|176988|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|db2ed863-351b-4861-bf29-cca531a55ea9|/dev/mapper/cs-swap|3999|3979|2022-05-27|08:25:49
-hpv1|/hpv1_storage|xfs|/dev/mapper/vg_storage-lv_storage|1948461095|2675780096|727319001|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|1577f9db-6d42-4714-bc62-e1c745038459|/dev/mapper/cs-swap|3999|3979|2022-05-27|08:25:49
