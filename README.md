@@ -167,13 +167,13 @@ Table "command line options":
 ---------
 8a)  Additional features to be added
 
-Add functionality to enable comparison of setup between dates.
-  Example:
-   * Any changes on rpm (installs, updates).
-   * Any changes on mount points, routing tables, etc
-   * Historical data comparison for storage /memory usage etc.
+Add functionality to allow comparison of any pre and post changes.
+  	Example:
+   	* Any changes on rpm (installs, updates).
+   	* Any changes on mount points, routing tables, etc
+   	* Historical data comparison for storage /memory usage etc.
 
-8b- Additional Data to be captured:
+8b)  Additional Data to be captured:
 - Routing Tables
 - LVM information (pvs /vgs/ lvs)
 - Match IPs with their respective interfaces. Most likely a custom ansible module is needed.
