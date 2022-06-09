@@ -116,7 +116,7 @@ schema_name: serverdata_schema
 
 7- Data Captured - All data are marked with the ansible timestamp fact:
 --------------
-Table "servers" (This is the main table):
+* Table "servers" (This is the main table):
 	
 	hostname
 	Operating System and Release
