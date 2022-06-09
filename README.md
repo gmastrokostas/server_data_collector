@@ -165,7 +165,8 @@ Table "command line options":
 	
 8- To Do (subject to constant change):
 ---------
-8a- Additional features to be added
+8a)  Additional features to be added
+
 Add functionality to enable comparison of setup between dates.
   Example:
    * Any changes on rpm (installs, updates).
