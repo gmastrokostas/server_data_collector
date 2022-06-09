@@ -128,6 +128,7 @@ Table "servers" (This is the main table):
 	uptime
 
 Table "hpv_vm_inventory":
+
 	hostname
 	name of virtual machine
 
