@@ -1,2 +1,2 @@
-database-centos8|/|xfs|/dev/mapper/cs-root|8481850|9436670|954820|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|6af2f022-22f0-4c54-8725-ac80c2b59735|/dev/mapper/cs-swap|3051|3051|2022-05-27|08:25:49
-database-centos8|/boot|xfs|/dev/vda1|190573|259584|69011|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|0cbc93d2-c7be-47fa-82a6-08bc17833031|/dev/mapper/cs-swap|3051|3051|2022-05-27|08:25:49
+database-centos8|/|xfs|/dev/mapper/cs-root|8478932|9436670|957738|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|6af2f022-22f0-4c54-8725-ac80c2b59735|/dev/mapper/cs-swap|3051|3051|2022-06-15|21:33:43
+database-centos8|/boot|xfs|/dev/vda1|190573|259584|69011|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|0cbc93d2-c7be-47fa-82a6-08bc17833031|/dev/mapper/cs-swap|3051|3051|2022-06-15|21:33:43

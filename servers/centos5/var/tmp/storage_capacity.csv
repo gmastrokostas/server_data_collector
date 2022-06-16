@@ -1,0 +1,2 @@
+centos5|/|xfs|/dev/mapper/cs-root|4033043|4452864|419821|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|66d98fa3-d770-4bd7-bb89-2210315ac18b|/dev/mapper/cs-swap|2047|2047|2022-06-15|21:33:41
+centos5|/boot|xfs|/dev/vda1|210464|259584|49120|rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota|30e30f66-d432-4a89-9fc2-549619c7162c|/dev/mapper/cs-swap|2047|2047|2022-06-15|21:33:41

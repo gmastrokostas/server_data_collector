@@ -18,7 +18,6 @@
     loop: "{{groups['all']}}"
     tags:
      - serverdata
-
   - name: Upload the rpm data to the database
     postgresql_copy:
       copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_rpmpackages}}"
@@ -63,7 +62,6 @@
     loop: "{{groups['all']}}"
     tags:
       - network_setup
-
   - name: Upload the storage capacity data in the database
     postgresql_copy:
       copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_storage_capacity}}"
