@@ -1,4 +1,11 @@
+#PROJECT IS ON PAUSE -
+#It appears that the postgresql ansible module is having problems with newer versions of ansible and/or python3.8
+#Most likely will move away from using the postgresql ansible module and start manipulating the database
+#Using python directly. Not sure yet what the next step will be
+
 # server_data_collector  v 0.4
+
+#FOR INSTALLATION INSTRUCTIONS SEE INSTALL.TXT
 
 #IMPORTANT PLEASE READ
 ----------------------
