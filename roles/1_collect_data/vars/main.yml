@@ -1,3 +1,9 @@
+#Seed variable to be used as a Primary Key in our database.
+#We use this in the jinja files
+seedorigin: "{{ inventory_hostname + ansible_chassis_asset_tag}}"
+seedgen: "{{ 100000000 | random(seed=seedorigin) }}"
+serverid: "{{seedgen}}"
+
 #Between these two variables we the {{item}} loop to dive 
 #into the directories named after each server when we feth
 #the remote files
