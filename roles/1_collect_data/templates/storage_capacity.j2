@@ -1,0 +1,3 @@
+{% for item in ansible_mounts %}
+{{serverid}}|{{ ansible_hostname }}|{{item.mount}}|{{item.fstype}}|{{item.device}}| {{item.size_available}} | {{item.size_total}} | {{item.size_available | filesizeformat() }} |{{item.size_total |  filesizeformat() }}  |{{item.options}}|{{item.uuid}}|{{ansible_date_time.date}}|{{ansible_date_time.time}}
+{% endfor %}

@@ -1,0 +1,29 @@
+# Custom Ansible Modules
+
+Custom ansible modules that capture server setup information in an easy to use format. These modules do not make any changes. They are written using standard Python3.6 libraries. Even though these modules are working they are still under WIP status and shout NOT be used in production.
+
+Modules list:
+
+- interface_info
+- indexkernels
+- modules_info
+- routing_table_info
+
+
+## Installation
+
+Create a directory named "library" in the same location you will be running your playbook from. Copy the scripts in your new "library" directory. You can then call/use these modules in your playbook like any other ansible module.
+
+## Usage
+
+``` 
+#Each script has documentation in the standard ansible format. Use your editor to view it.
+The "ansible-doc" command does not work unless the scripts are placed in the default "modules" directory and we don't want that just yet.
+```
+
+## Contributing
+Your input/feedback is strongly encouraged.
+
+
+## License
+GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
