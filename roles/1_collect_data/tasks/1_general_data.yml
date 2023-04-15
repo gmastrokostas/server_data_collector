@@ -3,17 +3,10 @@
     src: "{{j_servers}}"
     dest: "{{final_dirs}}/{{c_servers}}"
 
-#For all RPMs installed
-- name: Load rpm ansible facts
-  package_facts:
-    manager: auto
-  register: rpm_packages
-
 - name: template data for software table
   template:
     src: "{{j_rpmpackages}}"
     dest: "{{final_dirs}}/{{c_rpmpackages}}"
-
 
 #Network Setup data    
 - name: template data for network_setup table

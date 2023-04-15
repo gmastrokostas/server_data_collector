@@ -5,7 +5,7 @@
     state: absent
   delegate_to: localhost
 
-- name: Delete the old server data csv files from conrol node
+- name: Recreate the server data csv files from conrol node
   file:
     path: "{{server_path}}"
     state: directory
@@ -47,3 +47,8 @@
   set_fact:
     routeinfo: "{{lvmsetup}}"
 
+#For all RPMs installed
+- name: Load rpm ansible facts
+  package_facts:
+    manager: auto
+  register: rpm_packages
