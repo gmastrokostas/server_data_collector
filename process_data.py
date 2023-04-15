@@ -50,8 +50,6 @@ class file_processing:
             self.csv_file = self.lvm_setup_table
             self.data_file = "lvm_setup.csv"
 
-
-
     def dataprocessing(self):
 
         # clear the files in the datafiles directory
@@ -68,6 +66,8 @@ class file_processing:
             for x in files:
                  if self.data_file in x:
                     found_file = root + "/" + x
+                    ###
                     f_open = open(found_file, 'r')
                     f_csv_file.write(f_open.read())
+                    ###
         f_csv_file.close()
