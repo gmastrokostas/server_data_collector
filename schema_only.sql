@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7
--- Dumped by pg_dump version 14.7
+-- Dumped from database version 14.8
+-- Dumped by pg_dump version 14.8
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -337,7 +337,7 @@ CREATE TABLE serverdata_schema.storage_capacity (
     size_total bigint,
     size_available_human character varying(20),
     size_total_human character varying(20),
-    moption character varying(100),
+    moption character varying(300),
     uuid character varying(100),
     date_cpt character varying(10),
     time_cpt character varying(10)
