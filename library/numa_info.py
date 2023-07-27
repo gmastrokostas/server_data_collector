@@ -13,26 +13,27 @@ DOCUMENTATION = r'''
 ---
 module: lvm_info
 
-short_description: Display associations between drives and PVs and VGs and LVs.
+short_description: Display which NUMA node aNIC belongs to.
 
 
-description: Display associations between drives and LVM (PV/VG/LV).
-             Info is captured from '/dev/mapper/'
+description: Display in which NUMA node a NIC belongs to..
+             Info is captured from '/sys/class/net/"NIC_NAME"/device'
              This module does not perform any changes.
              The info is contained in one main list.
              List element position description
-             [0] displays drive 
-             [1] displays Volume Groups associated with each drive
-             [2] displays Logical Groups associated with each Volume Groups
+             [0] Interface name
+             [1] NUMA valie
 
 '''
 
 EXAMPLES = r'''
-- name: Display All LVM Info
-  lvm_info:
-  register: kvminfo
-- debug:
-    msg: "{{lvminfo}}"
+- hosts: all
+  tasks:
+  - name: LOL
+    numa_info:
+    register: info
+  - debug:
+      msg: "{{info.numainfo}}"
 '''
 def main():
     if_path = "/sys/class/net/"
@@ -60,14 +61,20 @@ def main():
             # print(path_convert_to_string)
             if regex_virtual not in search_string:
                 pci_ifs = path_convert_to_string + numa_file_path
+                if_name = path_convert_to_string.split("/")[7]
                 f_open = open(pci_ifs, "r")
                 f_numa_value = f_open.read()
-                # print(f_numa_value)
-                pci_cards = path_convert_to_string, f_numa_value
-                # pci_if_devices.append(pci_ifs+numa_file_path)
+                # We need to get rid of the \n line on each element of the list
+                for elements in range(len(f_numa_value)):
+                    f_numa_value_clean = f_numa_value.replace('\n', '')
+                pci_cards = if_name, f_numa_value_clean
                 for data in pci_cards:
                     numa_info_list.append(data)
+
     module = AnsibleModule(argument_spec={})
     response =numa_info_list
     module.exit_json(changed=False, numainfo=response)
 
+
+if __name__ == '__main__':
+    main()
