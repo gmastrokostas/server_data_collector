@@ -45,10 +45,11 @@
   register: lvmsetup
 - name: Set new facts for routing tables
   set_fact:
-    routeinfo: "{{lvmsetup}}"
+    lvminfo: "{{lvmsetup}}"
 
 #For all RPMs installed
 - name: Load rpm ansible facts
   package_facts:
     manager: auto
   register: rpm_packages
+
