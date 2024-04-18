@@ -1,0 +1,3 @@
+{% for info in nicnumainfo.nicnumainfo %}
+{{serverid}}|{{ansible_hostname}}|{{ansible_date_time.date}}|{{ansible_date_time.time}}|{{info}}
+{% endfor %}

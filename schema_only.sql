@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.8
--- Dumped by pg_dump version 14.8
+-- Dumped from database version 14.10
+-- Dumped by pg_dump version 14.10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -165,7 +165,7 @@ CREATE TABLE serverdata_schema.network_setup (
     default_interface character varying(10),
     default_route inet,
     interface_type character varying(10),
-    dns_entries character varying(100),
+    dns_entries character varying(200),
     date_cpt character varying(10),
     time_cpt character varying(10)
 );

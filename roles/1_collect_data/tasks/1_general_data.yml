@@ -35,6 +35,12 @@
     src: "{{j_lvm_setup}}"
     dest: "{{final_dirs}}/{{c_lvm_setup}}"
 
+#- name: template data for nic numa table
+#  template:
+#    src: "{{j_nic_numa_info}}"
+#    dest: "{{final_dirs}}/{{c_nic_numa_info}}"
+#  when: ('baremetal') in group_names
+
 #This will loop through all the j2 files.
 #if you add a new task with j2 file, above,
 #make sure to the variables for the j2 and csv file in vars/main.yml file

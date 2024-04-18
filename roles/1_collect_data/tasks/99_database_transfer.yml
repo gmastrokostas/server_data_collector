@@ -4,7 +4,7 @@
   ignore_errors: True
   block:
   - name: Clean up all tables
-    shell: psql -d serverdata -c "truncate table servers cascade"
+    shell: psql -d serverdata -c "truncate table a1servers  cascade"
 
   - name: Upload the server data to the database
     postgresql_copy:
@@ -72,5 +72,5 @@
         delimiter: '|'
         format: csv
     loop: "{{groups['all']}}"
-  when: ansible_hostname == "centos1"
+  when: ansible_hostname == "hpv1-v"
 

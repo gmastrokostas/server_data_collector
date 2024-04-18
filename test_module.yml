@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: LOL
+    nic_numa_info:
+    register: info
+  - debug:
+      msg: "{{info}}"
+
