@@ -1,3 +1,23 @@
+#This file is part of server data collector.
+#Copyright (C) 2022 - George Mastrokostas
+#email: gmastrokostas@gmail.com
+
+#server data collector is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#########################################################################
+
+# -*- coding: utf-8 -*-
+# Copyright: (c) 2022, gmastrokostas <gmastrokostas@gmail.com>
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+
 - include_tasks: 0_prepare_env.yml
 - include_tasks: 1_general_data.yml
 #- include_tasks: 2_hpv_vm_inventory.yml
