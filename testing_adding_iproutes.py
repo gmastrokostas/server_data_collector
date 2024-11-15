@@ -37,6 +37,7 @@ elif checK_file == True:
 hostname_tuple = tuple(hostname_list)
 interface_tuple = (interface_name,)
 print(hostname_tuple)
+input("Hello 1")
 print(interface_tuple)
 input("Hello press enter to continure")
 #print(hostname_tuple)

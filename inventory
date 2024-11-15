@@ -1,2 +1,8 @@
 [all]
-192.168.1.145
+
+[baremetal]
+hpv0
+hpv1
+
+[databases]
+hpv1-v

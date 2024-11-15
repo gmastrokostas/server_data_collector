@@ -26,4 +26,6 @@ network_setup_table = get_cwd+"/datafiles/network_setup"
 network_interfaces_table = get_cwd+"/datafiles/network_interfaces"
 network_routes_table = get_cwd+"/datafiles/network_routes"
 lvm_setup_table=get_cwd+"/datafiles/lvm_setup"
+yml_file_location=get_cwd+"/hostvars"
+save_yml_location=get_cwd+"/hostvars"
 data_items = ["servers", "rpm", "storage", "network_setup", "network_interfaces", "network_routes", "lvm_setup"]

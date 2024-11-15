@@ -1,0 +1,322 @@
+2023-07-28 13:09:44,080 p=114277 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to 
+all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This 
+feature will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-07-28 13:09:46,709 p=114277 u=seeker n=ansible | PLAY [all] ******************************************************************************************************************
+2023-07-28 13:09:46,716 p=114277 u=seeker n=ansible | TASK [Gathering Facts] ******************************************************************************************************
+2023-07-28 13:09:48,305 p=114277 u=seeker n=ansible | ok: [mule]
+2023-07-28 13:09:48,322 p=114277 u=seeker n=ansible | TASK [LOL] ******************************************************************************************************************
+2023-07-28 13:09:48,743 p=114277 u=seeker n=ansible | ok: [mule]
+2023-07-28 13:09:48,750 p=114277 u=seeker n=ansible | TASK [debug] ****************************************************************************************************************
+2023-07-28 13:09:48,774 p=114277 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "nicnumainfo": [
+            "ens256",
+            "-1",
+            "ens161",
+            "-1",
+            "ens224",
+            "-1",
+            "ens192",
+            "-1",
+            "ens160",
+            "-1",
+            "ens225",
+            "-1",
+            "ens193",
+            "-1"
+        ]
+    }
+}
+2023-07-28 13:09:48,796 p=114277 u=seeker n=ansible | PLAY RECAP ******************************************************************************************************************
+2023-07-28 13:09:48,796 p=114277 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:28:21,396 p=121883 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:28:23,818 p=121883 u=seeker n=ansible | ERROR! couldn't resolve module/action 'numa_info'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/home/seeker/stash/my_projects/server_data_collector/test_module.yml': line 3, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+  - name: LOL
+    ^ here
+
+2023-07-28 15:28:46,093 p=121922 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:28:47,690 p=121922 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:28:47,698 p=121922 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:28:49,165 p=121922 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:28:49,185 p=121922 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:28:49,646 p=121922 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:28:49,653 p=121922 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:28:49,680 p=121922 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "nicnumainfo": [
+            "ens256",
+            "-1",
+            "ens161",
+            "-1",
+            "ens224",
+            "-1",
+            "ens192",
+            "-1",
+            "ens160",
+            "-1",
+            "ens225",
+            "-1",
+            "ens193",
+            "-1"
+        ]
+    }
+}
+2023-07-28 15:28:49,705 p=121922 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:28:49,706 p=121922 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:29:18,649 p=121983 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:29:20,009 p=121983 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:20,019 p=121983 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:21,138 p=121983 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:29:21,153 p=121983 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:21,547 p=121983 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:29:21,552 p=121983 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:21,570 p=121983 u=seeker n=ansible | fatal: [mule]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: dict object has no element 0. dict object has no element 0\n\nThe error appears to be in '/home/seeker/stash/my_projects/server_data_collector/test_module.yml': line 6, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    register: info\n  - debug:\n    ^ here\n"}
+2023-07-28 15:29:21,571 p=121983 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:21,572 p=121983 u=seeker n=ansible | mule                       : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:29:35,037 p=122027 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:29:36,439 p=122027 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:36,446 p=122027 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:37,503 p=122027 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:29:37,518 p=122027 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:37,897 p=122027 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:29:37,903 p=122027 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:37,928 p=122027 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "nicnumainfo": [
+            "ens256",
+            "-1",
+            "ens161",
+            "-1",
+            "ens224",
+            "-1",
+            "ens192",
+            "-1",
+            "ens160",
+            "-1",
+            "ens225",
+            "-1",
+            "ens193",
+            "-1"
+        ]
+    }
+}
+2023-07-28 15:29:37,952 p=122027 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:29:37,952 p=122027 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:51:53,985 p=122768 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:51:55,910 p=122768 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:51:55,917 p=122768 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:51:57,300 p=122768 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:51:57,318 p=122768 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:51:57,725 p=122768 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:51:57,731 p=122768 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:51:57,753 p=122768 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "nicnumainfo": [
+            "ens256",
+            "-1",
+            "ens161",
+            "-1",
+            "ens224",
+            "-1",
+            "ens192",
+            "-1",
+            "ens160",
+            "-1",
+            "ens225",
+            "-1",
+            "ens193",
+            "-1"
+        ]
+    }
+}
+2023-07-28 15:51:57,774 p=122768 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:51:57,774 p=122768 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:52:19,015 p=122851 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:52:20,430 p=122851 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:20,437 p=122851 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:21,591 p=122851 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:21,607 p=122851 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:21,995 p=122851 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:22,003 p=122851 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:22,026 p=122851 u=seeker n=ansible | fatal: [mule]: FAILED! => {"msg": "template error while templating string: unexpected '}', expected ']'. String: {{info.nicnumainfo[0[}}. unexpected '}', expected ']'"}
+2023-07-28 15:52:22,028 p=122851 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:22,028 p=122851 u=seeker n=ansible | mule                       : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:52:35,494 p=122927 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:52:37,079 p=122927 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:37,086 p=122927 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:38,244 p=122927 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:38,258 p=122927 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:38,644 p=122927 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:38,650 p=122927 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:38,670 p=122927 u=seeker n=ansible | ok: [mule] => {
+    "msg": "ens256"
+}
+2023-07-28 15:52:38,692 p=122927 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:38,692 p=122927 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:52:50,023 p=122971 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:52:51,657 p=122971 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:51,665 p=122971 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:53,232 p=122971 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:53,248 p=122971 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:53,715 p=122971 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:52:53,721 p=122971 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:53,744 p=122971 u=seeker n=ansible | ok: [mule] => {
+    "msg": "n"
+}
+2023-07-28 15:52:53,766 p=122971 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:52:53,767 p=122971 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:52:57,906 p=123023 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:52:59,100 p=123023 u=seeker n=ansible |  [ERROR]: User interrupted execution
+
+2023-07-28 15:53:11,151 p=123050 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:53:12,731 p=123050 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:53:12,737 p=123050 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:53:13,873 p=123050 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:53:13,890 p=123050 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:53:14,278 p=123050 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:53:14,284 p=123050 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:53:14,305 p=123050 u=seeker n=ansible | ok: [mule] => {
+    "msg": "-1"
+}
+2023-07-28 15:53:14,326 p=123050 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:53:14,326 p=123050 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 15:58:08,193 p=123284 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:58:09,828 p=123284 u=seeker n=ansible |  [ERROR]: User interrupted execution
+
+2023-07-28 15:59:11,697 p=123632 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic version and can apply to all calls to the M(ansible.builtin.gather_facts) or M(ansible.builtin.setup) actions, use module_defaults instead. This feature 
+will be removed from ansible-core in version 2.18. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2023-07-28 15:59:13,325 p=123632 u=seeker n=ansible | PLAY [all] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:59:13,332 p=123632 u=seeker n=ansible | TASK [Gathering Facts] **************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:59:14,457 p=123632 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:59:14,472 p=123632 u=seeker n=ansible | TASK [LOL] **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:59:14,933 p=123632 u=seeker n=ansible | ok: [mule]
+2023-07-28 15:59:14,939 p=123632 u=seeker n=ansible | TASK [debug] ************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:59:14,961 p=123632 u=seeker n=ansible | ok: [mule] => {
+    "msg": "-1"
+}
+2023-07-28 15:59:14,981 p=123632 u=seeker n=ansible | PLAY RECAP **************************************************************************************************************************************************************************************************************************************************
+2023-07-28 15:59:14,982 p=123632 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 16:16:46,361 p=125522 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic 
+version and can apply to all calls to the M(ansible.builtin.gather_facts) or 
+M(ansible.builtin.setup) actions, use module_defaults instead. This feature will be removed from 
+ansible-core in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-07-28 16:16:47,335 p=125522 u=seeker n=ansible |  [ERROR]: User interrupted execution
+
+2023-07-28 16:17:02,279 p=125589 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic 
+version and can apply to all calls to the M(ansible.builtin.gather_facts) or 
+M(ansible.builtin.setup) actions, use module_defaults instead. This feature will be removed from 
+ansible-core in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-07-28 16:17:04,287 p=125589 u=seeker n=ansible | PLAY [all] ******************************************************************************************
+2023-07-28 16:17:04,297 p=125589 u=seeker n=ansible | TASK [Gathering Facts] ******************************************************************************
+2023-07-28 16:17:05,752 p=125589 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:05,771 p=125589 u=seeker n=ansible | TASK [LOL] ******************************************************************************************
+2023-07-28 16:17:06,170 p=125589 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:06,176 p=125589 u=seeker n=ansible | TASK [debug] ****************************************************************************************
+2023-07-28 16:17:06,197 p=125589 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "lvminfo": [
+            [
+                "sdc",
+                "vg_01",
+                "lv_01",
+                "/dev/mapper/vg_01-lv_01"
+            ],
+            [
+                "sda2",
+                "rl_rocky8",
+                "",
+                "/dev/mapper/rl_rocky8--template-swap"
+            ],
+            [
+                "sda2",
+                "rl_rocky8",
+                "",
+                "/dev/mapper/rl_rocky8--template-root"
+            ]
+        ]
+    }
+}
+2023-07-28 16:17:06,217 p=125589 u=seeker n=ansible | PLAY RECAP ******************************************************************************************
+2023-07-28 16:17:06,217 p=125589 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 16:17:08,392 p=125640 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic 
+version and can apply to all calls to the M(ansible.builtin.gather_facts) or 
+M(ansible.builtin.setup) actions, use module_defaults instead. This feature will be removed from 
+ansible-core in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-07-28 16:17:11,026 p=125640 u=seeker n=ansible | PLAY [all] ******************************************************************************************
+2023-07-28 16:17:11,034 p=125640 u=seeker n=ansible | TASK [Gathering Facts] ******************************************************************************
+2023-07-28 16:17:12,256 p=125640 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:12,276 p=125640 u=seeker n=ansible | TASK [LOL] ******************************************************************************************
+2023-07-28 16:17:12,655 p=125640 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:12,661 p=125640 u=seeker n=ansible | TASK [debug] ****************************************************************************************
+2023-07-28 16:17:12,681 p=125640 u=seeker n=ansible | ok: [mule] => {
+    "msg": "-1"
+}
+2023-07-28 16:17:12,701 p=125640 u=seeker n=ansible | PLAY RECAP ******************************************************************************************
+2023-07-28 16:17:12,701 p=125640 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-07-28 16:17:35,127 p=125719 u=seeker n=ansible | [DEPRECATION WARNING]: DEFAULT_GATHER_SUBSET option, the module_defaults keyword is a more generic 
+version and can apply to all calls to the M(ansible.builtin.gather_facts) or 
+M(ansible.builtin.setup) actions, use module_defaults instead. This feature will be removed from 
+ansible-core in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-07-28 16:17:36,841 p=125719 u=seeker n=ansible | PLAY [all] ******************************************************************************************
+2023-07-28 16:17:36,849 p=125719 u=seeker n=ansible | TASK [Gathering Facts] ******************************************************************************
+2023-07-28 16:17:38,281 p=125719 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:38,296 p=125719 u=seeker n=ansible | TASK [LOL] ******************************************************************************************
+2023-07-28 16:17:38,719 p=125719 u=seeker n=ansible | ok: [mule]
+2023-07-28 16:17:38,725 p=125719 u=seeker n=ansible | TASK [debug] ****************************************************************************************
+2023-07-28 16:17:38,745 p=125719 u=seeker n=ansible | ok: [mule] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "nicnumainfo": [
+            "ens256",
+            "-1",
+            "ens161",
+            "-1",
+            "ens224",
+            "-1",
+            "ens192",
+            "-1",
+            "ens160",
+            "-1",
+            "ens225",
+            "-1",
+            "ens193",
+            "-1"
+        ]
+    }
+}
+2023-07-28 16:17:38,765 p=125719 u=seeker n=ansible | PLAY RECAP ******************************************************************************************
+2023-07-28 16:17:38,765 p=125719 u=seeker n=ansible | mule                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
