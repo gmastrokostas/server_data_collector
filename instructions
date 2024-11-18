@@ -1,9 +1,43 @@
-This assumes you created and tested your new ansible module.
+# - Instructions on how to install and use this solution.
 
-1) Create your template and then edit roles/1_collect_data/tasks/0_prepare_env.yml
-and run the role for a test.
 
-2) Then edit roles/1_collect_data/tasks/1_general_data.yml
-use the Template module to transfer your template
+# - INSTALLATION
+----------------------------------------------------------------------------------------------------------
+1- To install this software your node needs to have:
+   - Redhat/Rocky 9
+   - 1>GB of RAM
+  
+2- Packages installed (all default packages)
+   - PostgreSQL 13.9
+   - Ansible 2.14
+   - ansible-runner
+   - python3-psycopg2
+
+2- Clone the installer
+   git clone git@gitlab.com:gmastrokostas/install_server_data_collector.git
+
+3- Insert the hostname in the inventory file of the server you want to install this solution 
+
+4- Execute
+   ansible-playbook install_server_data_collector_role.yml -i inventory -k -K
+
+5- Passwordless access to remote servers:
+   - Your remote servers need to have a service account named "seeker"
+   - You will need to setup ssh passwordless access between your node and all the remote servers with the "seeker" account.
  
+
+# - USAGE
+-----------------------------------------------------------------------------------------------------------
+
+1- Connect on the server you installed the server data collecter with the "seeker" account
+
+2- cd server_data_collector
+
+3- Enter in the inventory file all your servers
+
+4- Execute: python3 main.py
+
+5- To view the captured data type: psql -d serverdata
+
+6- Start quering the database
 
