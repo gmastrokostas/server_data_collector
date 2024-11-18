@@ -1,0 +1,76 @@
+- name: Upload data to database
+  delegate_to: 127.0.0.1
+  become_user: seeker
+  ignore_errors: True
+  block:
+  - name: Clean up all tables
+    shell: psql -d serverdata -c "truncate table a1servers  cascade"
+
+  - name: Upload the server data to the database
+    postgresql_copy:
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_servers}}"
+      dst: servers
+      db: serverdata
+      login_user: seeker
+      options:
+        delimiter: '|'
+        format: csv
+    loop: "{{groups['all']}}"
+    tags:
+     - serverdata
+  - name: Upload the rpm data to the database
+    postgresql_copy:
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_rpmpackages}}"
+      dst: rpm_packages
+      db: serverdata
+      login_user: seeker
+      options:
+        delimiter: ','
+        format: csv
+    loop: "{{groups['all']}}"
+    tags:
+     - rpmdata
+
+  - name: Check if the hypervisor inventory csv file exists
+    stat:
+      path: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_hypervisors_and_vms}}"
+    register: hpv_vm_file_result
+    loop: "{{groups['all']}}"
+
+  - name: Upload the vm inventory data in to the database
+    postgresql_copy:
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_hypervisors_and_vms}}"
+      dst: hpv_vm_inventory
+      db: serverdata
+      login_user: seeker
+      options:
+        delimiter: ','
+        format: csv
+    loop: "{{groups['all']}}"
+    failed_when: false
+    ignore_errors: yes
+
+  - name: Upload the network setup data in to the database
+    postgresql_copy:
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_network_setup}}"
+      dst: network_setup
+      db: serverdata
+      login_user: seeker
+      options:
+        delimiter: '|'
+        format: csv
+    loop: "{{groups['all']}}"
+    tags:
+      - network_setup
+  - name: Upload the storage capacity data in the database
+    postgresql_copy:
+      copy_from: "{{server_path}}/{{item}}/{{final_dirs}}/{{c_storage_capacity}}"
+      dst: storage_capacity
+      db: serverdata
+      login_user: seeker
+      options:
+        delimiter: '|'
+        format: csv
+    loop: "{{groups['all']}}"
+  when: ansible_hostname == "hpv1-v"
+

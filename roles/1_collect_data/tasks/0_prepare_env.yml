@@ -1,0 +1,66 @@
+---
+- name: Delete the old server data csv files from conrol node
+  file:
+    path: "{{server_path}}"
+    state: absent
+  delegate_to: localhost
+
+- name: Recreate the server data csv files from conrol node
+  file:
+    path: "{{server_path}}"
+    state: directory
+    owner: "{{app_admin_account}}"
+  delegate_to: localhost
+  ignore_errors: yes
+
+- name: Test connectivity on servers 
+  wait_for:
+    host: "{{ansible_host|default(inventory_hostname)}}"
+    port: 22
+    state: started
+    timeout: 5
+
+- name: gather all subset facts
+  setup:
+    gather_subset:
+       - 'all'
+
+- name: gather network custom info
+  interface_info:
+  register: interfaceinfo
+- name: Set new facts for interfaces
+  set_fact:
+    ifinfo: "{{interfaceinfo}}"
+
+
+- name: gather routing table info
+  network_routes:
+  register: routingtableinfo
+- name: Set new facts for routing tables
+  set_fact:
+    routeinfo: "{{routingtableinfo}}"
+
+- name: gather lvm info
+  lvm_info:
+  register: lvmsetup
+- name: Set new facts for routing tables
+  set_fact:
+    lvminfo: "{{lvmsetup}}"
+
+#For all RPMs installed
+- name: Load rpm ansible facts
+  package_facts:
+    manager: auto
+  register: rpm_packages
+
+#- name: Load NIC numa facts
+#  nic_numa_info:
+#  register: nicnumainfo
+#  when: ('baremetal') in group_names
+
+#- name: Set new facts for NIC Numa setup
+#  set_fact:
+#    nicnuma: "{{nicnumainfo}}"
+#    when: ('baremetal') in group_names
+#  when: ('baremetal') in group_names
+

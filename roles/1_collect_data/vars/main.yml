@@ -1,0 +1,52 @@
+#Seed variable to be used as a Primary Key in our database.
+#We use this in the jinja files
+seedorigin: "{{ inventory_hostname + ansible_chassis_asset_tag}}"
+seedgen: "{{ 100000000 | random(seed=seedorigin) }}"
+serverid: "{{seedgen}}"
+
+#Between these two variables we the {{item}} loop to dive
+#into the directories named after each server when we feth
+#the remote files
+server_path: servers
+final_dirs: /var/tmp
+path_for_loop: servers/"{{item}}"
+
+#used where ever the app account is needed.
+app_admin_account: seeker
+
+###Variables used by tasks/1_capture_data.yml to capture the ansible facts
+##template files variables
+j_servers: servers.j2
+j_rpmpackages: rpm_packages.j2
+j_hypervisors_and_vms: hypervisors_and_vms.j2
+j_network_setup: network_setup.j2
+j_storage_capacity: storage_capacity.j2
+j_network_interfaces: network_interfaces.j2
+j_network_routes: network_routes.j2
+j_lvm_setup: lvm_setup.j2
+#j_nic_numa_info: nic_numa_info.j2
+
+###Variables used by tasks/2_database_transfer.yml playbook to upload the data
+#into the database
+c_servers: servers.csv
+c_rpmpackages: rpm_packages.csv
+c_hypervisors_and_vms: hypervisors_and_vms.csv
+c_network_setup: network_setup.csv
+c_storage_capacity: storage_capacity.csv
+c_network_interfaces: network_interfaces.csv
+c_network_routes: network_routes.csv
+c_lvm_setup: lvm_setup.csv
+#c_nic_numa_info: nic_numa_info.csv
+
+#Do not include the hypervisor_and_vms.csv file in this loop
+#not all machines are a hpv and for simplicity we keep these tasks seperate
+
+csvs:
+ - csvfile: "{{c_servers}}"
+ - csvfile: "{{c_rpmpackages}}"
+ - csvfile: "{{c_network_setup}}"
+ - csvfile: "{{c_storage_capacity}}"
+ - csvfile: "{{c_network_interfaces}}"
+ - csvfile: "{{c_network_routes}}"
+ - csvfile: "{{c_lvm_setup}}"
+# - csvfile: "{{c_nic_numa_info}}"

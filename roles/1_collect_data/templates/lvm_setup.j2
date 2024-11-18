@@ -1,0 +1,3 @@
+{% for info in lvmsetup.lvminfo %}
+{{serverid}}|{{ansible_hostname}}|{{info[0]}}|{{info[1]}}|{{info[2]}}|{{info[3]}}
+{% endfor %}

@@ -1,0 +1,52 @@
+- name: template data for servers table
+  template:
+    src: "{{j_servers}}"
+    dest: "{{final_dirs}}/{{c_servers}}"
+
+- name: template data for software table
+  template:
+    src: "{{j_rpmpackages}}"
+    dest: "{{final_dirs}}/{{c_rpmpackages}}"
+
+#Network Setup data    
+- name: template data for network_setup table
+  template:
+    src: "{{j_network_setup}}"
+    dest: "{{final_dirs}}/{{c_network_setup}}"
+
+#Storage setup data
+- name: template data for storage_setup table
+  template:
+    src:  "{{j_storage_capacity}}"
+    dest: "{{final_dirs}}/{{c_storage_capacity}}"
+
+- name: template data for network interfaces names table
+  template:
+    src: "{{j_network_interfaces}}"
+    dest: "{{final_dirs}}/{{c_network_interfaces}}"
+
+- name: template data for network routes table
+  template:
+    src: "{{j_network_routes}}"
+    dest: "{{final_dirs}}/{{c_network_routes}}"
+
+- name: template data for lvm setup table
+  template:
+    src: "{{j_lvm_setup}}"
+    dest: "{{final_dirs}}/{{c_lvm_setup}}"
+
+#- name: template data for nic numa table
+#  template:
+#    src: "{{j_nic_numa_info}}"
+#    dest: "{{final_dirs}}/{{c_nic_numa_info}}"
+#  when: ('baremetal') in group_names
+
+#This will loop through all the j2 files.
+#if you add a new task with j2 file, above,
+#make sure to the variables for the j2 and csv file in vars/main.yml file
+- name: Fetch the remote templated files for the general data
+  fetch:
+    src: "{{final_dirs}}/{{item.csvfile}}"
+    dest: "{{server_path}}"
+  loop:  "{{csvs}}"
+      

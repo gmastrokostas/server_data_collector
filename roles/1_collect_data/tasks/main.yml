@@ -1,0 +1,5 @@
+- include_tasks: 0_prepare_env.yml
+- include_tasks: 1_general_data.yml
+#- include_tasks: 2_hpv_vm_inventory.yml
+#- include_tasks: 99_database_transfer.yml
+

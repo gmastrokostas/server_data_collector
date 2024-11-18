@@ -1,0 +1,9 @@
+This assumes you created and tested your new ansible module.
+
+1) Create your template and then edit roles/1_collect_data/tasks/0_prepare_env.yml
+and run the role for a test.
+
+2) Then edit roles/1_collect_data/tasks/1_general_data.yml
+use the Template module to transfer your template
+ 
+

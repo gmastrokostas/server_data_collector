@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: LOL
+    lvm_info:
+    register: info
+  - debug:
+      msg: "{{info}}"
+

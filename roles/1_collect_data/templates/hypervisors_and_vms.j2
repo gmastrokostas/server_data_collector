@@ -1,0 +1,3 @@
+{% for item in vm_list_results.list_vms %}
+{{serverid}}|{{ansible_hostname}},{{item}},{{ansible_date_time.date}},{{ansible_date_time.time}}
+{% endfor %}

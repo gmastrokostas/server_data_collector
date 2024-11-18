@@ -1,0 +1,8 @@
+[all]
+
+[baremetal]
+hpv0
+hpv1
+
+[databases]
+hpv1-v

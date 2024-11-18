@@ -1,93 +1,231 @@
-# server_data_collector
+# server_data_collector  v 0.4
+
+#FOR INSTALLATION INSTRUCTIONS SEE INSTALL.TXT
+
+#IMPORTANT PLEASE READ
+----------------------
+This is the core release. It does not contain the features I am currently working on.
+This release serves as a starting point in order to keep building on top of it.
+To get things rolling sort to speak.
+For a full list of all the items I am working on see the "To Do" section.
+
+Document Sections:
+
+1-  Purpose
+
+2-  Tools used to capture data:
+
+3-  Server Requirements:
+
+4-  Logical Diagram of how Data is captured and stored
+
+5-  Database Setup
+
+6-  Database Tables
+
+7-  Data Captured
+
+8-  To Do
 
 
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+1- Purpose:
+----------- 
+Collect server data in a format tailored to serve the needs of operations, engineering and infosec.
+It provides easy and at scale access of server environment data and how it is setup.
+This will allow the audit the network, software, storage, hardware of the servers at a large scale.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Data is collected with Ansible, processed with Python and uploaded to a PostgreSQL database.
 
-## Add your files
+In addition, custom queries and custom python scripts or ansible playbooks can be written to perform
+sanity checks, generate template files for changes for large number of servers.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/gmastrokostas/server_data_collector.git
-git branch -M main
-git push -uf origin main
-```
+2- Summary of how it works:
+-----------------------
+It is agentless. From a single control node, data is captured via ansible (ansible facts) and jinja2 templates.
+The jinja2 files are created on the server and then brought back to the ansible control node.
+At that point the data is uploaded on the database which runs on the same ansible controls node.
+None of the remote servers interact with the database. As a result there is no need to setup sql clients on the servers.
+The database is completely isolated from the network and is configured to deny any network connections.
+All connections are made only via ansible through SSH.
 
-## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/gmastrokostas/server_data_collector/-/settings/integrations)
+3- Logical Diagram of how Data is captured and stored:
+---------------------------------------------------
 
-## Collaborate with your team
+                   Single Control node
+          +-----------------------------------+
+          |     Data is uploaded in Database  |
+          |     ---------------------------   |
+          |                 ∧                 |
+          |     Data is stored in CVS files   |
+          |     ---------------------------   |
+          |                 ∧                 |
+          |     Ansible captures server data  |
+          |     ----------------------------  |
+          -------------------------------------
+                           ∧
+     Jinja2 templates are deployd and fetched back as CSV files
+                           v
+     -------------  -------------   -------------  -------------
+     |  server   |  |  server   |   |   server  |  |   server  |
+     ------------   -------------   -------------  -------------
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+4- Case Examples (all these are done at scale):
+---------------------------------------
+- Network route traffic sanity check: Check if server traffic is going out through the correct interface 
+  by comparing the server route entries against a series of routes in a database table.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- At scale automation config file generation to be deployed.
+  Generate ansible host_vars files to add dynamic and static routes on servers. Each generated yml file 
+  is associated with the given server and the given server’s individual routing information. 
+  If the new routing information entered by the end user do not correspond to an actual interface name 
+  and/or if the IP is not an actual IP, the files are not generated.
 
-***
+- To expand on the above example, you can query the database to find which servers talk to a specific network.
+  For example you may want to find out which servers talk to a specific venue, or have to the outside world.
 
-# Editing this README
+- Instant Search for specific RPM packages and their versions across the whole estate.
+  This allows for the instant search of RPM packages across the whole estate.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-## Suggestions for a good README
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-## Name
-Choose a self-explaining name for your project.
+5- Requirements
+--------------------------
+SOFTWARE For the Control Node:
+ - Redhat/CentOS/Rocky - 8/9
+ - Ansible v 2.9
+ - Postgres 14/15
+ - Python3.6
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+HARDWARE for the Control Node:
+1 VM with 1 GIG of RAM and 60GIGs of space.
+Plans are underway to make this a container.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+SOFTWARE on the Remote Servers:
+ - python36-pusitls (RPM is part of the official Repos)
+ - ssh
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+6- Data Capture with Ansible
+-----------------------------
+The ansible role/playbook which captures this data requires sudo access on the remote servers.
+For consistency and to avoid issues with permissions when uploading data in the database, 
+the Linux account used with the ansible role has the same name as the database role used to
+manage this data in the database.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+The data is captured with the use of ansible by deploying jinja2 templates which reference 
+ansible facts from each server. These facts are captured through the default ansible
+facts and also from  the use of custom written ansible modules written in python3.6.
+The latter was done to address limitations with how the default ansible facts are organized.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+As per the "template" ansible module, the jinja2 templates are deployed on the 
+remote servers where the facts/variables are being populated with the appropriate values per each server.
+The location of these files is in “/var/tmp” but this can be easily changed to a different location.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Once the templates are populated with data then the files are brought back through the use of the “fetch” 
+ansible module and stored as “CSV” files in the control node. The upload of data in the database is done
+through the use of custom Python scripts since the postgresSQL ansible module does not appear to be
+maintained with vigor by the ansible community and it often breaks.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+The type of data these templates capture is described in the “database tables” section of this document.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+7- List and Description of the custom Ansible modules
+--------------------------------------------------
+The modules are not placed in the default ansible module location. 
+This is done to keep the default install of ansible as is. 
+Instead they are placed in the directory called “library” in the same location where the playbook/role is run from.
+All the custom ansible modules were created with Python3.6. 
+Only the default python modules were used. All of the custom modules are unable to perform any system changes.
+They just capture data from the remote servers.
 
-## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+8- List of custom ansible modules created:
+---------------------------------------
+- network_routes.py: Data is captured from “/proc/net/route”
+
+- modules_info.py: Data is captured from “/proc/modules”
+
+- lvm_info.py: Data is captured from “/dev/mapper” and “/sys/block”
+
+- interface_info.py: Data is captured by using the socket and psutil python default modules
+
+- hypervisor_info.py: Data is captured by using the “libvirt” python module. This module is installed by default if a server is a KVM server.
+
+
+9- Processing and Uploading to the database the data:
+-----------------------------------------------------
+After ansible is done fetching the files with the server data, then a series of python scripts
+upload the data into the database. These scripts do not need sudo access and they all reside/owned
+under the Linux “seeker” account, the same account used with ansible.
+
+However, the default admin database account “postgres” needs to have access to the associated directories
+from where the data are uploaded from. The “postgres” account is not used in any way to upload/manipulate
+any of the data, but the account needs to be aware of these directories from where the data is coming from.
+
+Access to these directories to the “postgres” account is granted through the use strict Linux ACL permissions,
+which explicitly allow access only to the default “postgres” account.
+Reminder: the “postgres” account has no login permissions. 
+
+The processing of data and upload of data is done through the “main.py", “process_data.py” and “upload_data.py”.
+Only default python modules are used.
+
+
+10- Database Setup
+----------------
+schema name: serverdata
+
+role/user:
+- seeker (admin rights on serverdata schema)
+- seeker_ro (read only on serverdata schema)
+
+Access Database Rules:
+- At a Network Level the Database engine is setup to deny all network access.
+
+- Data is uploaded by using the admin account “seeker” for the “serverdata” schema.
+  This role has no access to any other schemas in the database engine. It is password enabled
+
+- Queries can be done only by logging to the control node and only by using the “read only” role “seeker_ro”.
+  This role has access only on the “serverdata” schema. It is password enabled.
+
+- The Postgres DB engine creates a default account of “postgres”. This login needs its own home directory
+  but it is configured not to allow for a login session (remote or local). This account is the default admin db account. 
+  It is password enabled.
+
+
+11- Database Tables:
+--------------------
+
+- a1servers: Is the main table. It stores general information for the servers.
+  The primary key for this table is a unique ID number which is being generated by Ansible.
+  This key is being referenced by the other tables to ensure data integrity.
+  You may have two hosts with the same hostname but you cannot have two entries with the same unique ID.
+  This table stores version of the OS, RAM size, CPU type, cores.
+
+- lvm_setup: Captures how the drives are setup with LVM. Displays which drives belong to which Volume and Logical groups.
+
+- network_interfaces: Captures the interface names their assigned IPs and in what network they belong.
+
+- network_routes: Captures the information from the routing table.
+
+- network_setup: Captures the default interface, default route, interface type and dns entries.
+
+- rpm_packages: Captures all installed RPM packages for each host.
+
+- storage_capacity: Captures all the mount points and options set for each mount for all devices,
+  uuid for each mount, disk size/availability/usage.
+
+- external_routes / internal_routes: These contain routes/networks that are used for comparison with current setup of servers.
+  Suppose that traffic from server XYZ needs to go out from interface A but instead it goes out from interface B, 
+  these tables will allow us to capture such anomalies.
+
+- hpv_vm_invewntory: This captures if a physical server is a KVM HyperVisor and if so what VMs exist in that specific 
+  server. This table so far captures only KVM hypervisors.
+
