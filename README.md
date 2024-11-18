@@ -1,8 +1,8 @@
-# server_data_collector  v 0.4
+# server_data_collector  v 0.6
 
-#FOR INSTALLATION INSTRUCTIONS SEE INSTALL.TXT
+# FOR INSTALLATION AND INSTRUCTIONS READ the "instructions" file
 
-#IMPORTANT PLEASE READ
+
 ----------------------
 This is the core release. It does not contain the features I am currently working on.
 This release serves as a starting point in order to keep building on top of it.
