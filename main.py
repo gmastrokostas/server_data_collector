@@ -34,7 +34,14 @@ except Exception as e:
 
 #IF everything worked with the playbook then upload the data to the database.
 
-#Variable data_items is a list that contains the variables for each table in our database.
+#Variable data_items will be used by process_data.py to determine which type of information
+#We will process. See the "if" statements in the process_data.py.
+#if file_type==servers then we will proccess the info in the a1servers file
+#and the destination file will be servers.csv.
+#At that point the type of file will determine the file path.
+#in this example the path will be the variable servers_data_table which all the data for 
+#servers for each device will be appended on.
+#
 #We call the file_processing class from the "process.py" file and we pass the
 #variables from the "read_data".
 #Read the comments on "app_variables.py" file under section "Process_data"
