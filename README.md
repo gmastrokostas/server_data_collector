@@ -4,11 +4,6 @@
 
 
 ----------------------
-This is the core release. It does not contain the features I am currently working on.
-This release serves as a starting point in order to keep building on top of it.
-To get things rolling sort to speak.
-For a full list of all the items I am working on see the "To Do" section.
-
 Document Sections:
 
 1-  Purpose
@@ -32,9 +27,9 @@ Document Sections:
 
 1- Purpose:
 ----------- 
-Collect server data in a format tailored to serve the needs of operations, engineering and infosec.
-It provides easy and at scale access of server environment data and how it is setup.
-This will allow the audit the network, software, storage, hardware of the servers at a large scale.
+
+Collect and access at scale access server setup/environment data.
+Makes network, software, storage, hardware audits of the servers easy and fast.
 
 Data is collected with Ansible, processed with Python and uploaded to a PostgreSQL database.
 
