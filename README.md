@@ -28,7 +28,7 @@ Document Sections:
 1- Purpose:
 ----------- 
 
-Collect and access at scale access server setup/environment data.
+Collect and access at scale server setup/environment data.
 Makes network, software, storage, hardware audits of the servers easy and fast.
 
 Data is collected with Ansible, processed with Python and uploaded to a PostgreSQL database.
