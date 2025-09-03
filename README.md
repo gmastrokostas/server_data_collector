@@ -94,8 +94,8 @@ All connections are made only via ansible through SSH.
 --------------------------
 SOFTWARE For the Control Node:
  - Redhat/CentOS/Rocky - 8/9
- - Ansible v 2.9
- - Postgres 14/15
+ - Ansible v 2.9 and above
+ - Postgres 14/15 and above
  - Python3.6
 
 HARDWARE for the Control Node:
@@ -104,7 +104,7 @@ Plans are underway to make this a container.
 
 
 SOFTWARE on the Remote Servers:
- - python36-pusitls (RPM is part of the official Repos)
+ - python3-pusitls (RPM is part of the official Repos)
  - ssh
 
 
