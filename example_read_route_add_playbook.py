@@ -14,6 +14,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-{% for item in vm_list_results.list_vms %}
-{{serverid}}|{{ansible_hostname}},{{item}},{{ansible_date_time.date}},{{ansible_date_time.time}}
-{% endfor %}
+import yaml
+
+with open('example-route_table_support-playbook.yml', 'r') as file:
+    routes_config=yaml.safe_load(file)
+
+#print(routes_config[0])
+
+tasks=routes_config[0]['tasks'][1]
+
+discovery=tasks["vars"]["network_connections"]
+
+total_interfaces=len(discovery)
+
+counter=0
+while counter < total_interfaces:
+    print(discovery[counter])
+    counter=counter+1
+
+
+
+
+routes=(discovery[0]['ip']['route'])
+
+
+
+
+#print(var1)
+#This is a dict
+route_variables=(tasks["vars"])
+#print(route_variables['network_connections'])
+network_config=route_variables['network_connections'][0]
+#interface_name
+ifname=network_config['name']
+#Contains ip-mode-methods-route
+ipinfo=(network_config['ip'])
+#Contains routes
+routes=ipinfo['route']
+
+
