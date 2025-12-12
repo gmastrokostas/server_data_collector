@@ -65,7 +65,10 @@ def main():
                 # /dev/mapper/. So for example /dev/mapper/ has cs-root and cs-swap
                 # Linux always does this. The first entry cs is the VG and second entry after - is the LV
                 vg_name = vg_name_entry.split("-")[0]
-                lv_name = vg_name_entry.split("-")[1]
+                if vg_name=="mpatha":
+                    lv_name="mpatha"
+                else:
+                    lv_name = vg_name_entry.split("-")[1]
                 # Now you will dive in the /sys/block/dm-*/slaves and see whuch drives belong on each DM-*
                 dir_list = os.listdir(dm_slaves_sys_path)
                 for i in dir_list:
@@ -79,48 +82,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
