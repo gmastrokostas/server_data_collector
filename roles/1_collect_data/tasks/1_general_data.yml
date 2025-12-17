@@ -51,6 +51,11 @@
     src: "{{j_lvm_setup}}"
     dest: "{{final_dirs}}/{{c_lvm_setup}}"
 
+- name: teample testing new module
+  template:
+    src:  network_hardware_interfaces.j2
+    dest: /var/tmp/interface_hardware_info.csv
+
 #- name: template data for nic numa table
 #  template:
 #    src: "{{j_nic_numa_info}}"
