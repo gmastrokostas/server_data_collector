@@ -69,6 +69,15 @@
     manager: auto
   register: rpm_packages
 
+- name: gather network hardware info
+  interface_hardware_info:
+  register: nic_hardware_info
+- name: Set new facts for nic hardware
+  set_fact:
+    nicinfo: "{{nic_hardware_info}}"
+    
+  
+
 #- name: Load NIC numa facts
 #  nic_numa_info:
 #  register: nicnumainfo
