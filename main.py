@@ -64,12 +64,27 @@ except Exception as e:
 
 for file_type in app_variables.data_items:
     #calling class method dataprocessing from class file_processing
-    read_data = file_processing(file_type, app_variables.servers_path, app_variables.servers_data_table, app_variables.rpm_data_table,
-                                app_variables.storage_table, app_variables.network_setup_table, app_variables.network_interfaces_table,
-                                app_variables.network_routes_table, app_variables.lvm_setup_table)
+    read_data = file_processing(
+                                file_type,
+                                app_variables.servers_path,
+                                app_variables.servers_data_table,
+                                app_variables.rpm_data_table,
+                                app_variables.storage_table,
+                                app_variables.network_setup_table,
+                                app_variables.network_interfaces_table,
+                                app_variables.network_routes_table,
+                                app_variables.lvm_setup_table,
+                                app_variables.interface_hardware_info_table)
     read_data.dataprocessing()
 
-uploader = data_upload(app_variables.servers_data_table, app_variables.rpm_data_table, app_variables.storage_table, app_variables.network_setup_table,
-                       app_variables.network_interfaces_table, app_variables.network_routes_table, app_variables.lvm_setup_table, app_variables.servers_path)
+uploader = data_upload(app_variables.servers_data_table,
+                       app_variables.rpm_data_table,
+                       app_variables.storage_table,
+                       app_variables.network_setup_table,
+                       app_variables.network_interfaces_table,
+                       app_variables.network_routes_table,
+                       app_variables.lvm_setup_table,
+                       app_variables.interface_hardware_info_table,
+                       app_variables.servers_path)
 uploader.upload()
 
