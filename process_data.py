@@ -27,8 +27,17 @@ class file_processing:
     #servers_data_table = "/home/seeker/stash/server_data_collector/datafiles/servers"
     #rpm_data_table = "/home/seeker/stash/server_data_collector/datafiles/rpm_packages"
     #
-    def __init__(self, file_type, servers_path, servers_data_table, rpm_data_table,
-                 storage_table, network_setup_table, network_interfaces_table, network_routes_table, lvm_setup_table):
+    def __init__(self, file_type,
+                 servers_path,
+                 servers_data_table,
+                 rpm_data_table,
+                 storage_table,
+                 network_setup_table,
+                 network_interfaces_table,
+                 network_routes_table,
+                 lvm_setup_table,
+                 interface_hardware_info_table):
+        
         self.servers_path = servers_path
         self.servers_data_table = servers_data_table
         self.rpm_data_table = rpm_data_table
@@ -37,6 +46,8 @@ class file_processing:
         self.network_interfaces_table = network_interfaces_table
         self.network_routes_table = network_routes_table
         self.lvm_setup_table = lvm_setup_table
+        self.interface_hardware_info_table=interface_hardware_info_table
+        
 
         if file_type == "servers":
            self.csv_file = self.servers_data_table
@@ -65,6 +76,10 @@ class file_processing:
         elif file_type == "lvm_setup":
             self.csv_file = self.lvm_setup_table
             self.data_file = "lvm_setup.csv"
+            
+        elif file_type=="interface_hardware_info":
+            self.csv_file = self.interface_hardware_info_table
+            self.data_file="interface_hardware_info.csv"
 
     def dataprocessing(self):
 

@@ -24,8 +24,17 @@ class data_upload:
     get_cwd = os.getcwd()
     #processed_data = "/home/seeker/stash/my_projects/server_data_collector/datafiles"
     processed_data =get_cwd+"/datafiles"
-    def __init__(self, servers_data_table, rpm_data_table, storage_table,
-                 network_setup_table, network_interfaces_table, network_routes_table, lvm_setup_table, servers_path):
+    def __init__(self, 
+                 servers_data_table, 
+                 rpm_data_table,
+                 storage_table,
+                 network_setup_table,
+                 network_interfaces_table,
+                 network_routes_table,
+                 lvm_setup_table,
+                 interface_hardware_info_table,
+                 servers_path):
+        
         self.file_list = [f for f in os.listdir(self.processed_data) if os.path.isfile(os.path.join(self.processed_data, f))]
         print(self.file_list)
         self.conn = psycopg2.connect(dbname='serverdata', user='seeker')
