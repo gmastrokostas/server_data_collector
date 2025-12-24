@@ -1,0 +1,7 @@
+{% set nics = nic_hrdw_info.hardware_info.values() | list %}
+{% for i in range(5) %}
+{% if nics[i] is defined %}
+{# Access index 0 for Name and index 4 for Speed #}
+{{serverid}}|{{ansible_hostname}}|{{ansible_date_time.date}}|{{ansible_date_time.time}}|{{nics[i][0]}}|{{nics[i][1]}}|{{nics[i][2]}}|{{nics[i][3]}}|{{nics[i][4]}}|{{nics[i][5]}}|{{nics[i][6]}}|{{nics[i][7]}}|{{nics[i][8]}}|{{nics[i][9]}}|{{nics[i][10]}}|{{nics[i][11]}}
+{% endif %}
+{% endfor %}

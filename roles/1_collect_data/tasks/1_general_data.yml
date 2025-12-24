@@ -55,10 +55,16 @@
   template:
     src: "{{j_interface_hardware_info}}"
     dest: "{{final_dirs}}/{{c_interface_hardware_info}}"
-#- name: teample testing new module
+
+- name: template NIC hardware state info
+  template:
+    src: "{{j_nic_hardw_state}}"
+    dest: "{{final_dirs}}/{{c_nic_hardw_state}}"
+
+#- name: template testing new module
 #  template:
-#    src:  network_hardware_interfaces.j2
-#    dest: /var/tmp/interface_hardware_info.csv
+#    src:  nic_hardw_state.j2
+#    dest: /var/tmp/nic_hardw_state.csv
 
 #- name: template data for nic numa table
 #  template:
