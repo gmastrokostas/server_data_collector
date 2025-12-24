@@ -41,6 +41,7 @@ j_network_interfaces: network_interfaces.j2
 j_network_routes: network_routes.j2
 j_lvm_setup: lvm_setup.j2
 j_interface_hardware_info: interface_hardware_info.j2
+j_nic_hardw_state: nic_hardw_state.j2
 #j_nic_numa_info: nic_numa_info.j2
 
 ###Variables used by tasks/2_database_transfer.yml playbook to upload the data
@@ -54,7 +55,7 @@ c_network_interfaces: network_interfaces.csv
 c_network_routes: network_routes.csv
 c_lvm_setup: lvm_setup.csv
 c_interface_hardware_info: interface_hardware_info.csv
-#c_nic_numa_info: nic_numa_info.csv
+c_nic_hardw_state: nic_hardw_state.csv
 
 #Do not include the hypervisor_and_vms.csv file in this loop
 #not all machines are a hpv and for simplicity we keep these tasks seperate
@@ -68,4 +69,5 @@ csvs:
  - csvfile: "{{c_network_routes}}"
  - csvfile: "{{c_lvm_setup}}"
  - csvfile: "{{c_interface_hardware_info}}"
-# - csvfile: "{{c_nic_numa_info}}"
+ - csvfile: "{{c_nic_hardw_state}}"
+

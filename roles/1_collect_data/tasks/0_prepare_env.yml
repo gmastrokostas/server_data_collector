@@ -76,7 +76,12 @@
   set_fact:
     nicinfo: "{{nic_hardware_info}}"
     
-  
+
+- name: gather NIC hardware state and info
+  nic_state_info:
+  register: nic_hrdw_info
+- set_fact:
+    nichardwareinfo: "{{nic_hrdw_info}}"
 
 #- name: Load NIC numa facts
 #  nic_numa_info:

@@ -36,7 +36,9 @@ class file_processing:
                  network_interfaces_table,
                  network_routes_table,
                  lvm_setup_table,
-                 interface_hardware_info_table):
+                 interface_hardware_info_table,
+                 nic_hardw_state_table
+                 ):
         
         self.servers_path = servers_path
         self.servers_data_table = servers_data_table
@@ -47,6 +49,7 @@ class file_processing:
         self.network_routes_table = network_routes_table
         self.lvm_setup_table = lvm_setup_table
         self.interface_hardware_info_table=interface_hardware_info_table
+        self.nic_hardw_state_table=nic_hardw_state_table
         
 
         if file_type == "servers":
@@ -80,6 +83,14 @@ class file_processing:
         elif file_type=="interface_hardware_info":
             self.csv_file = self.interface_hardware_info_table
             self.data_file="interface_hardware_info.csv"
+        
+        elif file_type=="nic_hardw_state":
+            self.csv_file=self.nic_hardw_state_table
+            self.data_file="nic_hardw_state.csv"
+
+        #elif file_type=="nic_hardw_state":
+        #    self.csv_file = self.nic_hardw_state_table
+        #    self.data_file="nic_hardw_state.csv"
 
     def dataprocessing(self):
 
