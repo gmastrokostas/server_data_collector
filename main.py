@@ -75,7 +75,8 @@ for file_type in app_variables.data_items:
                                 app_variables.network_routes_table,
                                 app_variables.lvm_setup_table,
                                 app_variables.interface_hardware_info_table,
-                                app_variables.nic_hardw_state_table)
+                                app_variables.nic_hardw_state_table,
+                                app_variables.modules_info_table)
     read_data.dataprocessing()
 
 uploader = data_upload(app_variables.servers_data_table,
@@ -87,6 +88,7 @@ uploader = data_upload(app_variables.servers_data_table,
                        app_variables.lvm_setup_table,
                        app_variables.interface_hardware_info_table,
                        app_variables.nic_hardw_state_table,
+                       app_variables.modules_info_table,
                        app_variables.servers_path)
 uploader.upload()
 

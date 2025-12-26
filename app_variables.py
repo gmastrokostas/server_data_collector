@@ -50,6 +50,7 @@ network_routes_table = get_cwd+"/datafiles/network_routes"
 lvm_setup_table=get_cwd+"/datafiles/lvm_setup"
 interface_hardware_info_table=get_cwd+"/datafiles/interface_hardware_info"
 nic_hardw_state_table=get_cwd+"/datafiles/nic_hardw_state"
+modules_info_table=get_cwd+"/datafiles/modules_info"
 
 
 
@@ -58,4 +59,4 @@ save_yml_location=get_cwd+"/hostvars"
 
 #This list will be used by main.py 
 #Read the comments in the main.py for more information.
-data_items = ["servers", "rpm", "storage", "network_setup", "network_interfaces", "network_routes", "lvm_setup","interface_hardware_info","nic_hardw_state"]
+data_items = ["servers", "rpm", "storage", "network_setup", "network_interfaces", "network_routes", "lvm_setup","interface_hardware_info","nic_hardw_state","modules_info"]

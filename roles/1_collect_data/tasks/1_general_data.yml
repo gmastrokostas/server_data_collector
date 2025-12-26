@@ -61,6 +61,11 @@
     src: "{{j_nic_hardw_state}}"
     dest: "{{final_dirs}}/{{c_nic_hardw_state}}"
 
+- name: template modules info
+  template:
+    src: "{{j_modules_info}}"
+    dest: "{{final_dirs}}/{{c_modules_info}}"
+
 #- name: template testing new module
 #  template:
 #    src:  nic_hardw_state.j2

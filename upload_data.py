@@ -34,6 +34,7 @@ class data_upload:
                  lvm_setup_table,
                  interface_hardware_info_table,
                  nic_hardw_state_table,
+                 modules_info_table,
                  servers_path):
         
         self.file_list = [f for f in os.listdir(self.processed_data) if os.path.isfile(os.path.join(self.processed_data, f))]

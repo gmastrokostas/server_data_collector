@@ -18,6 +18,9 @@
 import os
 import sys
 
+from app_variables import modules_info_table
+
+
 class file_processing:
     #This directory has the csv files ansible creates and fetches with
     #data from the servers
@@ -37,7 +40,8 @@ class file_processing:
                  network_routes_table,
                  lvm_setup_table,
                  interface_hardware_info_table,
-                 nic_hardw_state_table
+                 nic_hardw_state_table,
+                 modules_info_table
                  ):
         
         self.servers_path = servers_path
@@ -50,6 +54,7 @@ class file_processing:
         self.lvm_setup_table = lvm_setup_table
         self.interface_hardware_info_table=interface_hardware_info_table
         self.nic_hardw_state_table=nic_hardw_state_table
+        self.modules_info_table=modules_info_table
         
 
         if file_type == "servers":
@@ -87,6 +92,10 @@ class file_processing:
         elif file_type=="nic_hardw_state":
             self.csv_file=self.nic_hardw_state_table
             self.data_file="nic_hardw_state.csv"
+
+        elif file_type=="modules_info":
+            self.csv_file=self.modules_info_table
+            self.data_file="modules_info.csv"
 
         #elif file_type=="nic_hardw_state":
         #    self.csv_file = self.nic_hardw_state_table

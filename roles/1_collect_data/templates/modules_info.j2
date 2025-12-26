@@ -1,0 +1,3 @@
+{% for info  in modules_info.moduleinfo%}
+{{serverid}}|{{ansible_hostname}}|{{ansible_date_time.date}}|{{ansible_date_time.time}}|{{info[0]}}|{{info[1]}}|{{info[2]}}|{{info[3]}}
+{% endfor %}
