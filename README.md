@@ -204,23 +204,63 @@ Access Database Rules:
   You may have two hosts with the same hostname but you cannot have two entries with the same unique ID.
   This table stores version of the OS, RAM size, CPU type, cores.
 
-- lvm_setup: Captures how the drives are setup with LVM. Displays which drives belong to which Volume and Logical groups.
+- nic_hardw_state:
+  - ifname
+  - numa_location
+  - operstate (up/down)
+  - ifindex
+  - nic speed
+  - mtu
+  - pci_lane_width - maximum number of PCIe lanes
+  - pci_lane_current - number of lanes currently active and negotiated for data transfer
+  - max_link_speed - highest PCIe generation speed supported (e.g., 8.0 GT/s for Gen3).
+  - link_speed_current -  The actual speed at which the PCIe link is operating right now.
+  - driver
+  - nic_model
+  
 
-- network_interfaces: Captures the interface names their assigned IPs and in what network they belong.
+- lvm_setup:
+  - pvs_info
+  - vgs_info
+  - lvs_info
+  - dev_mapper associated 
 
-- network_routes: Captures the information from the routing table.
+- network_interfaces: 
+  - ifname
+  - ipaddr
+  - netmark
 
-- network_setup: Captures the default interface, default route, interface type and dns entries.
+- network_routes:
+  - ifname
+  - destination
+  - gateway
+  - netmask
 
-- rpm_packages: Captures all installed RPM packages for each host.
+- network_setup:
+  - default_interface
+  - default route
+  - interface type (ether/bridge/bond/etc)
+  - dns entries
+  - 
 
-- storage_capacity: Captures all the mount points and options set for each mount for all devices,
-  uuid for each mount, disk size/availability/usage.
+- rpm_packages: 
+  - package name
+  - package version
+  - package release
+  
+- storage_capacity: 
+  - mount
+  - fstype
+  - device
+  - size available
+  - size total
+  - size available human readable
+  - size total human readable
+  - mount options
+  - uuid
 
-- external_routes / internal_routes: These contain routes/networks that are used for comparison with current setup of servers.
-  Suppose that traffic from server XYZ needs to go out from interface A but instead it goes out from interface B, 
-  these tables will allow us to capture such anomalies.
-
-- hpv_vm_invewntory: This captures if a physical server is a KVM HyperVisor and if so what VMs exist in that specific 
-  server. This table so far captures only KVM hypervisors.
-
+- modules_info
+  - module_name
+  - module_ram_size
+  - dependent_count
+  - dependents
