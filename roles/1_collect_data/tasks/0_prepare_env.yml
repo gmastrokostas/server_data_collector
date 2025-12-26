@@ -83,6 +83,13 @@
 - set_fact:
     nichardwareinfo: "{{nic_hrdw_info}}"
 
+- name: gather modules information
+  modules_info:
+  register: modules_info
+- set_fact:
+    modulesinfo: "{{modules_info}}"
+
+
 #- name: Load NIC numa facts
 #  nic_numa_info:
 #  register: nicnumainfo
