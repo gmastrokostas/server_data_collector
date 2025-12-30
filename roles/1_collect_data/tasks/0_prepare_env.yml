@@ -82,6 +82,8 @@
   register: nic_hrdw_info
 - set_fact:
     nichardwareinfo: "{{nic_hrdw_info}}"
+#- debug: 
+#    msg: "{{nic_hrdw_info}}"
 
 - name: gather modules information
   modules_info:
