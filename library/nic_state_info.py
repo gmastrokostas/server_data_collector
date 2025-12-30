@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
-
-from ansible.module_utils.basic import *
 import pyudev
 import os
 from pathlib import Path
 import re
 import os.path
-
+import subprocess
+import json
+from ansible.module_utils.basic import *
 
 def main():
-
     hardware_info_list = []
     context = pyudev.Context()
 
     for network_devices in context.list_devices(subsystem='net'):
         parent = network_devices.find_parent('pci')
         interface_name = (network_devices.sys_name)
-        if parent:
+        if  parent:
             model = parent.get('ID_MODEL_FROM_DATABASE')
             info = (interface_name, model)
             hardware_info_list.append(info)
@@ -74,7 +73,7 @@ def main():
         # print(path_convert_to_string)
             if regex_virtual not in search_string:
 
-                # DETECT LINK WIDTH
+            # DETECT LINK WIDTH
                 if vm_status==True:
                     link_width_value="N/A"
                     link_current_value="N/A"
@@ -108,39 +107,39 @@ def main():
                     f_numa_value = f_open.read()
 
                 # OPERSTATE INFO
-                link_ifs = path_convert_to_string + operstate_file
-                f_open_oper = open(link_ifs, "r")
-                f_opersate_value = f_open_oper.read()
+                    link_ifs = path_convert_to_string + operstate_file
+                    f_open_oper = open(link_ifs, "r")
+                    f_opersate_value = f_open_oper.read()
                 # INDEX INFO
-                index_ifs = path_convert_to_string + nic_index_file
-                f_open_index = open(index_ifs, "r")
-                f_ifindex_value = f_open_index.read()
+                    index_ifs = path_convert_to_string + nic_index_file
+                    f_open_index = open(index_ifs, "r")
+                    f_ifindex_value = f_open_index.read()
 
                 # MTU INFO
-                index_ifs = path_convert_to_string + nic_mtu_file
-                f_open_mtu = open(index_ifs, "r")
-                f_mtu_value = f_open_mtu.read()
+                    index_ifs = path_convert_to_string + nic_mtu_file
+                    f_open_mtu = open(index_ifs, "r")
+                    f_mtu_value = f_open_mtu.read()
 
                 # SPEED INFO
-                speed_ifs = path_convert_to_string + nic_speed_file
-                wireless_check = path_convert_to_string + "/wireless"
+                    speed_ifs = path_convert_to_string + nic_speed_file
+                    wireless_check = path_convert_to_string + "/wireless"
                 ##############################################################################
 
                 #NIC Driver info
-                nic_driver_info=path_convert_to_string+nic_driver
-                real_path_nic_driver=os.path.realpath(nic_driver_info)
-                driver_path=real_path_nic_driver.split("/")
-                driver=driver_path[5]
+                    nic_driver_info=path_convert_to_string+nic_driver
+                    real_path_nic_driver=os.path.realpath(nic_driver_info)
+                    driver_path=real_path_nic_driver.split("/")
+                    driver=driver_path[5]
 
                 #We will ignore wireless interfaces.
-                if os.path.isdir(wireless_check):
-                    f_speed_value = "N/A"
-                else:
-                    f_open_speed = open(speed_ifs, "r")
-                    f_speed_value = f_open_speed.read()
+                    if os.path.isdir(wireless_check):
+                        f_speed_value = "N/A"
+                    else:
+                        f_open_speed = open(speed_ifs, "r")
+                        f_speed_value = f_open_speed.read()
 
 
-                nic_cards = (entries, #NIC Name
+                    nic_cards = (entries, #NIC Name
                              f_numa_value, #NUMA Location
                              f_opersate_value, #If its up or down
                              f_ifindex_value, #index value of NIC
@@ -152,11 +151,12 @@ def main():
                              current_link_speed_value, # speed at which the device is actually negotiated and running right now.
                              driver
                              )
-                nic_cards_cleaned = tuple(item.strip() for item in nic_cards)
+                    nic_cards_cleaned = tuple(item.strip() for item in nic_cards)
 
-                pci_if_devices.append(nic_cards_cleaned)
+                    pci_if_devices.append(nic_cards_cleaned)
 
     nic_state_info = {}
+
 
     for interfaces in pci_if_devices:
         x = nic_state_info[interfaces[0]] = list(interfaces[0:])
@@ -164,6 +164,58 @@ def main():
     for hardware in hardware_info_list:
         if hardware[0] in nic_state_info:
             nic_state_info[hardware[0]].extend(hardware[1:])
+        
+#for i in nic_state_info.items():
+#   print(i)   
+
+
+#############PART TWO -- DATA FROM lshw command
+
+    output = subprocess.check_output(["sudo", "lshw", "-class", "network", "-json"])
+    network_data = json.loads(output)
+
+
+
+    for interface in network_data:
+        logical_name = interface.get('logicalname') #
+
+        if isinstance(logical_name, list):
+            logical_name_isol=logical_name[0]
+        else:
+            logical_name_isol = logical_name
+        
+        if logical_name_isol in nic_state_info:
+            config = (interface.get('configuration'))
+            device_class = interface.get('class')
+            description = interface.get('description')
+            product = (interface.get('product')) 
+            vendor = (interface.get('vendor'))
+            phyid = (interface.get('physid')) #
+            businfo = (interface.get('businfo')) #
+            mac = (interface.get('serial'))
+            width = (interface.get('width')) #
+            ip = (config.get('ip', "-"))
+            link = config['link']
+            driver = config['driverversion']
+            firmware = config['firmware']
+            link_max_speed = config.get('speed', "-")
+        
+        # Add these variables to the existing list in nic_state_info
+            additional_details = [
+                vendor,
+                phyid,
+                businfo,
+                mac,
+                width,
+                ip,
+                driver,
+                firmware,
+                link_max_speed
+            ]
+        
+        # Extend the existing list with these new details
+            nic_state_info[logical_name_isol].extend(additional_details)
+
 
     module = AnsibleModule(argument_spec={})
     response = nic_state_info
@@ -173,4 +225,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
 
