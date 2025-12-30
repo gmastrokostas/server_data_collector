@@ -20,6 +20,7 @@
     path: "{{server_path}}"
     state: absent
   delegate_to: localhost
+  ignore_errors: true
 
 - name: Recreate the server data csv files from conrol node
   file:
