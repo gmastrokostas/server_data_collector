@@ -36,6 +36,21 @@
     state: started
     timeout: 5
 
+- name: Delete previous CSV files from remote servers
+  file:
+    path: "{{final_dirs}}/{{item.csvfile}}"
+    state: absent
+  loop: "{{csvs}}"
+#- name: Check Passwordless sudo access
+#  become: true
+#  command: /usr/bin/sudo -n true
+#  become_method: sudo
+#  register: sudo_test
+#- name: Fail task
+#  fail:
+#    when: required in "{{sudo_test}}"
+
+
 - name: gather all subset facts
   setup:
     gather_subset:
