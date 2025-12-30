@@ -87,7 +87,8 @@
     src: "{{final_dirs}}/{{item.csvfile}}"
     dest: "{{server_path}}"
   loop:  "{{csvs}}"
-
+  ignore_errors: true
+  register: error_csv
 #IMPORTANT - Read section below.
 #This part deals with data collected with means outside of j2 templates.
 #Keep these blocks of code seperate so it will be easy to maintain.
