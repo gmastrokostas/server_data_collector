@@ -47,6 +47,6 @@ class data_upload:
         for x in self.file_list:
             with open(x, 'r') as data_file:
                 cur.copy_from(data_file, x, sep='|')
-                print(x)
+                #print(x)
         self.conn.commit()
         self.conn.close()
