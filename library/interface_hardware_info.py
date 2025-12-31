@@ -6,6 +6,42 @@
 from ansible.module_utils.basic import *
 import pyudev
 
+DOCUMENTATION = r'''
+---
+module: interface_hardware_info.p
+
+short_description: Display hardware information for your network interfaces. This module has been tested with RHLE8/9. It requires the python3-pyudev rpm package.
+
+
+description: Display interface names, vendor device number, vendor, model.
+             The module needs rpm python3-pyudev installed on the remote nodes
+             This module does not perform any changes.
+             The information is contained in one main list and information for each interface
+             is a list it self and information for each interface is its own tuple.
+             List element position description
+             [0] interface name
+             [1] vendor device number
+             [2] vendor name
+             [3] model
+'''
+
+EXAMPLES = r'''
+- name: Display All Network Interface info
+  hardware_info_list:
+  register: ifacehardinfo
+- debug:
+    msg: "{{ifacehardinfo}}"
+
+- name: Search for specific interface name and model
+  hardware_info_list::
+  register: result
+- debug:
+    msg: "{{item}}"
+  with_items:
+  - "{{result.ifinfo}}"
+  when:
+   - (item[0] == 'eth0' and item[1] == "Melanox")
+'''
 
 def main():
     
