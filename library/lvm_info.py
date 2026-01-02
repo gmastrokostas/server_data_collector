@@ -64,10 +64,12 @@ def main():
                 # And you will parse the last entries under
                 # /dev/mapper/. So for example /dev/mapper/ has cs-root and cs-swap
                 # Linux always does this. The first entry cs is the VG and second entry after - is the LV
+                vg_name_len=vg_name_entry.split("-")
                 vg_name = vg_name_entry.split("-")[0]
-                if vg_name.startswith("mpath"):
-                    vg_name=="mpatha"
-                    lv_name="mpatha"
+                #if vg_name.startswith("MyClusterStorage"):
+                if len(vg_name_len) < 2:
+                    vg_name=vg_name
+                    lv_name=vg_name
                 else:
                     lv_name = vg_name_entry.split("-")[1]
                 # Now you will dive in the /sys/block/dm-*/slaves and see whuch drives belong on each DM-*
